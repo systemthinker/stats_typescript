@@ -1,22 +1,19 @@
-import { CsvFileReader } from './CsvFileReader';
-import { dateStringToDate } from './utils';
-import { matchResult } from './MatchResult';
+import { MatchReader } from './inheritance/MatchReader';
+import { MatchResult } from './MatchResult';
 
-const reader = new CsvFileReader('football.csv');
+const reader = new MatchReader('football.csv');
 reader.read();
-
-const testDate = reader.data[0][0];
-
-console.log('testDate', testDate);
 
 let manUnitedWins = 0;
 
 for (let match of reader.data) {
-  if (match[1] === 'Man United' && match[5] === matchResult.homeWin) {
+  if (match[1] === 'Man United' && match[5] === MatchResult.homeWin) {
     manUnitedWins++;
   }
 
-  if (match[2] === 'Man United' && match[5] === matchResult.awayWin) {
+  if (match[2] === 'Man United' && match[5] === MatchResult.awayWin) {
     manUnitedWins++;
   }
 }
+
+console.log('man wins:', manUnitedWins);

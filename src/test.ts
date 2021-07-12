@@ -6,8 +6,11 @@ class HoldString {
   constructor(public data: string) {}
 }
 
-class HoldAnything<TypeOfData> {
-  constructor(public data: TypeOfData) {}
+class HoldAnything<T> {
+  constructor(public data: T) {}
+  add(a: T): T {
+    return a;
+  }
 }
 
 const holdString = new HoldString('adsf');
